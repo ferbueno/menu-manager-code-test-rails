@@ -1,0 +1,13 @@
+<%= form_with model: @menu do |form| %>
+  <% if @menu.errors.any? %>
+    <div>
+      <% @menu.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger" role="alert"><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="mb-2">
+    <%= form.text_field :name, placeholder: 'Name', class: 'form-control' %>
+  </div>
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

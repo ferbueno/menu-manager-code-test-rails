@@ -1,0 +1,19 @@
+<%= form_with model: @dish do |form| %>
+  <% if @dish.errors.any? %>
+    <div>
+      <% @dish.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger" role="alert"><%= message %></div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="mb-2">
+    <%= form.text_field :name, placeholder: 'Name', class: 'form-control' %>
+  </div>
+  <div class="mb-2">
+    <%= form.number_field :price, step: 0.01, placeholder: 'Price', class: 'form-control' %>
+  </div>
+  <div class="mb-2">
+    <%= form.collection_select :menu_id, Menu.all, :id, :name, { selected: @dish&.menu&.id || params[:menu_id], include_blank: 'None' }, {class: 'form-select'}  %>
+  </div>
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,7 @@
+<h1><%= @menu.name %></h1>
+<% @dishes = @menu.dishes %>
+<%= render "dishes/list" %>
+
+<%= link_to new_dish_path(menu_id: @menu.id), class: "btn btn-primary" do %>
+  <i class="bi bi-plus-lg"></i> New Dish
+<% end %>

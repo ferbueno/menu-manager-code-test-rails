@@ -1,0 +1,44 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Price
+      </th>
+      <th>
+        Menu
+      </th>
+      <th>
+        Actions
+      </th>
+    </tr>
+  </thead>
+  <% @dishes.each do |dish| %>
+    <tr>
+      <td><%= dish.name %></td>
+      <td><%= number_to_currency dish.price %></td>
+      <td>
+        <% if dish.menu %>
+          <%= link_to dish.menu.name, menu_path(dish.menu) %>
+        <% end %>
+      </td>
+      <td>
+        <div>
+          <%= link_to dish_path(dish), class: "btn btn-outline-primary" do %>
+            <i class="bi bi-search"></i>
+          <% end %>
+          <%= link_to edit_dish_path(dish), class: "btn btn-outline-primary" do %>
+            <i class="bi bi-pencil"></i>
+          <% end %>
+          <div class="d-inline-block">
+            <%= button_to dish_path(dish), method: :delete, data: { confirm: 'Are you sure?', method: :delete }, class: "btn btn-outline-danger" do %>
+              <i class="bi bi-archive"></i>
+            <% end %>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>

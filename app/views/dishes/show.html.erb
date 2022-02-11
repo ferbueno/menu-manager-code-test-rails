@@ -1,0 +1,5 @@
+<h1><%= @dish.name %></h1>
+<h3><%= @dish.price %></h3>
+<% if @dish.menu %>
+  <h3><%= @dish.menu.name %></h3>
+<% end %>

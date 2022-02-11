@@ -1,0 +1,35 @@
+<h1>Menus</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Actions
+      </th>
+    </tr>
+  </thead>
+  <% @menus.each do |menu| %>
+    <tr>
+      <td><%= menu.name %></td>
+      <td>
+        <div>
+          <%= link_to menu_path(menu), class: "btn btn-outline-primary" do %>
+              <i class="bi bi-search"></i>
+          <% end %>
+          <%= link_to edit_menu_path(menu), class: "btn btn-outline-primary" do %>
+              <i class="bi bi-pencil"></i>
+          <% end %>
+          <%= link_to menu_path(menu), method: :delete, data: { confirm: 'Are you sure?', method: :delete }, class: "btn btn-outline-danger" do %>
+            <i class="bi bi-archive"></i>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to new_menu_path, class: "btn btn-primary" do %>
+  <i class="bi bi-plus-lg"></i> New Menu
+<% end %>
